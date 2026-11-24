@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bosque de La Primavera — El Pulmón Verde de Jalisco</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Fraunces / Playfair Display & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: {
+                            950: '#0D241B',
+                            900: '#1B4332',
+                            800: '#2D6A4F',
+                            700: '#40916C',
+                            500: '#52B788',
+                            200: '#B7E4C7',
+                            100: '#D8F3DC',
+                            50:  '#F2F9F5'
+                        },
+                        earth: {
+                            600: '#9C6644',
+                            500: '#B08968',
+                            400: '#D4A373',
+                            200: '#EDE0D4',
+                            100: '#F5EBE0'
+                        },
+                        cream: '#FAF9F6',
+                        volcanic: '#2B2D2F'
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'topo-pattern': "url(\"data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 60c20-20 40 20 60 0s40-20 60 0M0 30c25-15 35 15 60 0s35-15 60 0M0 90c25-15 35 15 60 0s35-15 60 0' fill='none' stroke='%231B4332' stroke-opacity='0.06' stroke-width='1.5'/%3E%3C/svg%3E\")",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos personalizados para animaciones orgánicas y detalles topográficos */
+        body {
+            background-color: #FAF9F6;
+            color: #1F2933;
+            overflow-x: hidden;
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at 75% 25%, rgba(82, 183, 136, 0.25) 0%, rgba(27, 67, 50, 0.92) 55%, #0D241B 100%);
+        }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes mistDrift {
+            0% { transform: translateX(-3%) scale(1.02); opacity: 0.45; }
+            50% { transform: translateX(3%) scale(1.05); opacity: 0.7; }
+            100% { transform: translateX(-3%) scale(1.02); opacity: 0.45; }
+        }
+
+        .animate-float {
+            animation: floatSlow 6s ease-in-out infinite;
+        }
+
+        .animate-mist {
+            animation: mistDrift 14s ease-in-out infinite;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(27, 67, 50, 0.08);
+        }
+
+        .glass-dark {
+            background: rgba(13, 36, 27, 0.72);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+        }
+
+        /* Ocultar barra de desplazamiento en pestañas móviles */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-forest-700 selection:text-white">
+
+    <!-- ===================================================================== -->
+    <!-- BARRA DE NAVEGACIÓN SUPERIOR (STICKY)                                 -->
+    <!-- ===================================================================== -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <nav class="rounded-2xl px-4 sm:px-6 py-3 flex items-center justify-between transition-all duration-300 bg-forest-950/80 backdrop-blur-md border border-white/10 shadow-lg">
+                <!-- Logo / Marca -->
+                <a href="#inicio" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-forest-500 to-forest-800 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L5 12h4l-3 7h12l-3-7h4L12 2z"/>
+                            <path d="M12 19v3"/>
+                        </svg>
+                    </div>
+                    <div class="leading-tight">
+                        <span class="font-serif font-bold text-white text-base sm:text-lg tracking-wide block">La Primavera</span>
+                        <span class="text-[11px] uppercase tracking-widest text-forest-200 font-medium block">Área Natural Protegida</span>
+                    </div>
+                </a>
+
+                <!-- Enlaces Desktop -->
+                <div class="hidden lg:flex items-center gap-7 text-sm font-medium text-forest-100">
+                    <a href="#introduccion" class="hover:text-earth-400 transition-colors">El Bosque</a>
+                    <a href="#cifras" class="hover:text-earth-400 transition-colors">Cifras y Ficha</a>
+                    <a href="#biodiversidad" class="hover:text-earth-400 transition-colors">Biodiversidad</a>
+                    <a href="#actividades" class="hover:text-earth-400 transition-colors">Qué Hacer</a>
+                    <a href="#conservacion" class="hover:text-earth-400 transition-colors">Reglamento</a>
+                </div>
+
+                <!-- Botones CTA Header -->
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <button onclick="openVisitModal('horarios')" class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-earth-400 hover:bg-earth-500 text-forest-950 font-bold text-xs sm:text-sm transition-all shadow-md hover:shadow-lg cursor-pointer">
+                        <i data-lucide="compass" class="w-4 h-4"></i>
+                        <span>Planifica tu visita</span>
+                    </button>
+
+                    <!-- Botón Menú Móvil -->
+                    <button id="mobile-menu-btn" aria-label="Abrir menú" class="lg:hidden p-2.5 rounded-xl text-white hover:bg-white/10 transition-colors">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </nav>
+
+            <!-- Menú Desplegable Móvil -->
+            <div id="mobile-menu" class="hidden lg:hidden mt-2 rounded-2xl bg-forest-950/95 backdrop-blur-xl border border-white/15 p-5 shadow-2xl">
+                <div class="flex flex-col space-y-3 text-forest-100 font-medium">
+                    <a href="#inicio" class="mobile-link py-2 px-3 rounded-xl hover:bg-white/10">Inicio</a>
+                    <a href="#introduccion" class="mobile-link py-2 px-3 rounded-xl hover:bg-white/10">¿Qué es el Bosque?</a>
+                    <a href="#cifras" class="mobile-link py-2 px-3 rounded-xl hover:bg-white/10">Cifras y Ficha Técnica</a>
+                    <a href="#biodiversidad" class="mobile-link py-2 px-3 rounded-xl hover:bg-white/10">Biodiversidad (Flora y Fauna)</a>
+                    <a href="#actividades" class="mobile-link py-2 px-3 rounded-xl hover:bg-white/10">Qué Hacer y Rutas</a>
+                    <a href="#conservacion" class="mobile-link py-2 px-3 rounded-xl hover:bg-white/10">Reglamento y Conservación</a>
+                    <div class="pt-2 border-t border-white/10">
+                        <button onclick="openVisitModal('horarios')" class="w-full py-3 px-4 rounded-xl bg-earth-400 text-forest-950 font-bold text-sm flex items-center justify-center gap-2">
+                            <i data-lucide="calendar-clock" class="w-4 h-4"></i>
+                            Planifica tu visita y horarios
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===================================================================== -->
+    <!-- 1. HERO / SECCIÓN PRINCIPAL                                           -->
+    <!-- ===================================================================== -->
+    <section id="inicio" class="relative min-h-screen flex items-center pt-28 pb-20 lg:pt-32 lg:pb-24 overflow-hidden bg-forest-950">
+        <!-- Capa de fondo artístico: Cordillera volcánica, bosque de pino-encino y niebla -->
+        <div class="absolute inset-0 hero-gradient z-0"></div>
+
+        <!-- Patrón topográfico sutil -->
+        <div class="absolute inset-0 opacity-20 z-0" style="background-image: radial-gradient(#B7E4C7 1px, transparent 1px); background-size: 32px 32px;"></div>
+
+        <!-- Efecto de luz solar entre copas de árboles -->
+        <div class="absolute -top-24 right-1/4 w-[500px] h-[500px] rounded-full bg-forest-500/20 blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-10 left-10 w-[350px] h-[350px] rounded-full bg-earth-400/15 blur-[100px] pointer-events-none"></div>
+
+        <!-- Ilustración SVG Panorámica de Siluetas Volcánicas y Pinos en el horizonte -->
+        <div class="absolute bottom-0 left-0 right-0 w-full pointer-events-none z-0 overflow-hidden">
+            <!-- Niebla animada -->
+            <div class="animate-mist w-[110%] -ml-[5%] h-36 bg-gradient-to-t from-forest-200/15 via-forest-100/10 to-transparent blur-xl"></div>
+            <svg class="w-full h-44 sm:h-64 md:h-80 text-forest-900/90" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <!-- Montañas y domos volcánicos (El Colli / Mesa El Nejahuete) -->
+                <path fill="#133124" d="M0,224L80,197.3C160,171,320,117,480,128C640,139,800,213,960,213.3C1120,213,1280,139,1360,101.3L1440,64L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+                <!-- Segunda capa de bosque -->
+                <path fill="#0D241B" d="M0,256L60,245.3C120,235,240,213,360,218.7C480,224,600,256,720,250.7C840,245,960,203,1080,192C1200,181,1320,203,1380,213.3L1440,224L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+                <!-- Transición suave hacia el fondo crema -->
+                <path fill="#FAF9F6" d="M0,295L120,288C240,281,480,267,720,272C960,277,1200,298,1320,308L1440,318L1440,320L0,320Z"></path>
+            </svg>
+        </div>
+
+        <!-- Contenido Principal Hero -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+                <!-- Columna Izquierda: Textos y CTA -->
+                <div class="lg:col-span-7 text-left space-y-6">
+                    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-forest-100 text-xs sm:text-sm font-medium">
+                        <span class="w-2 h-2 rounded-full bg-earth-400 animate-pulse"></span>
+                        <span>El Pulmón Verde de Guadalajara y Jalisco • ANP desde 1980</span>
+                    </div>
+
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.12] tracking-tight">
+                        Bosque de La Primavera: <span class="text-transparent bg-clip-text bg-gradient-to-r from-forest-200 via-earth-200 to-earth-400 italic">El pulmón verde de Jalisco</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg lg:text-xl text-forest-100/90 max-w-2xl leading-relaxed font-normal">
+                        Explora más de <strong class="text-white font-semibold">30,500 hectáreas</strong> de origen volcánico, biodiversidad única, aguas termales y senderos naturales a pocos minutos de Guadalajara.
+                    </p>
+
+                    <!-- Botones de Acción (CTA) -->
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+                        <a href="#actividades" class="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl bg-earth-400 hover:bg-earth-500 text-forest-950 font-bold text-base transition-all shadow-xl shadow-black/25 hover:-translate-y-0.5">
+                            <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            <span>Explorar rutas y actividades</span>
+                        </a>
+                        <a href="#introduccion" class="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl bg-white/10 hover:bg-white/20 text-white border border-white/25 backdrop-blur-md font-semibold text-base transition-all">
+                            <span>Conoce el bosque</span>
+                            <i data-lucide="arrow-down-right" class="w-5 h-5 text-forest-200"></i>
+                        </a>
+                    </div>
+
+                    <!-- Mini indicadores rápidos -->
+                    <div class="pt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs sm:text-sm text-forest-200/90">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="clock" class="w-4 h-4 text-earth-400"></i>
+                            <span>Acceso: 07:00 – 17:00 hrs</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="thermometer" class="w-4 h-4 text-earth-400"></i>
+                            <span>Clima templado: 20 °C prom.</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="flame" class="w-4 h-4 text-earth-400"></i>
+                            <span>Caldera volcánica activa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Tarjeta Visual Inmersiva / Postal Interactiva -->
+                <div class="lg:col-span-5">
+                    <div class="glass-dark rounded-3xl p-6 sm:p-7 shadow-2xl animate-float relative overflow-hidden">
+                        <!-- Ilustración Vectorial de Ecosistema Volcánico y Bosque -->
+                        <div class="relative rounded-2xl overflow-hidden bg-gradient-to-b from-forest-800 via-forest-900 to-forest-950 p-5 border border-white/10 mb-5">
+                            <svg class="w-full h-48 sm:h-56" viewBox="0 0 400 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Sol / Luna dorada -->
+                                <circle cx="310" cy="55" r="28" fill="#D4A373" fill-opacity="0.85"/>
+                                <circle cx="310" cy="55" r="42" fill="#D4A373" fill-opacity="0.2"/>
+                                <!-- Vapor geotérmico / Fumarolas -->
+                                <path d="M115 135C110 115 128 105 120 85" stroke="#B7E4C7" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.6"/>
+                                <path d="M132 140C128 122 142 112 135 92" stroke="#D8F3DC" stroke-width="2" stroke-linecap="round" stroke-opacity="0.45"/>
+                                <!-- Domo volcánico -->
+                                <path d="M20 185L125 95L195 145L275 80L385 185H20Z" fill="#1B4332"/>
+                                <path d="M125 95L165 185H20L125 95Z" fill="#2D6A4F" fill-opacity="0.65"/>
+                                <!-- Río Caliente serpenteante -->
+                                <path d="M130 155C160 165 140 180 185 188C225 195 210 208 265 212" stroke="#52B788" stroke-width="6" stroke-linecap="round"/>
+                                <path d="M130 155C160 165 140 180 185 188C225 195 210 208 265 212" stroke="#D8F3DC" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/>
+                                <!-- Pinos estilizados primer plano -->
+                                <g fill="#0D241B">
+                                    <polygon points="55,130 35,185 75,185"/>
+                                    <polygon points="55,112 40,155 70,155"/>
+                                    <polygon points="90,145 74,190 106,190"/>
+                                    <polygon points="320,120 295,185 345,185"/>
+                                    <polygon points="320,100 302,150 338,150"/>
+                                    <polygon points="355,140 336,190 374,190"/>
+                                </g>
+                            </svg>
+                            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between bg-forest-950/80 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/10 text-xs text-forest-100">
+                                <span class="flex items-center gap-1.5 font-medium">
+                                    <i data-lucide="mountain" class="w-3.5 h-3.5 text-earth-400"></i>
+                                    Caldera Volcánica Activa
+                                </span>
+                                <span class="text-earth-400 font-semibold">2,270 msnm máx.</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <h2 class="font-serif text-xl font-bold text-white">Planifica tu escapada natural</h2>
+                                <span class="px-2.5 py-1 rounded-lg bg-forest-500/20 text-forest-200 text-xs font-semibold">4 Municipios</span>
+                            </div>
+                            <p class="text-sm text-forest-100/80 leading-relaxed">
+                                Abarca territorio de <strong class="text-white">Zapopan, Tlajomulco de Zúñiga, Tala y El Arenal</strong>. Consulta ingresos oficiales y recomendaciones antes de salir.
+                            </p>
+                            <div class="pt-2 grid grid-cols-2 gap-2.5">
+                                <button onclick="openVisitModal('ingresos')" class="py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer">
+                                    <i data-lucide="navigation" class="w-3.5 h-3.5 text-earth-400"></i>
+                                    <span>Ver ingresos oficiales</span>
+                                </button>
+                                <button onclick="openVisitModal('horarios')" class="py-2.5 px-3 rounded-xl bg-forest-700 hover:bg-forest-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer">
+                                    <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+                                    <span>Guía del visitante</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 2. INTRODUCCIÓN / BIENVENIDA ("Naturaleza viva a las puertas...")     -->
+    <!-- ===================================================================== -->
+    <section id="introduccion" class="py-20 lg:py-28 bg-topo-pattern relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <!-- Columna Visual / Tarjetas de Valor Ecológico -->
+                <div class="lg:col-span-5 order-2 lg:order-1">
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-1 gap-5">
+                        <!-- Pilar 1 -->
+                        <div class="bg-white rounded-3xl p-6 shadow-sm border border-forest-900/10 hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 rounded-2xl bg-forest-100 text-forest-800 flex items-center justify-center mb-4">
+                                <i data-lucide="cloud-rain-wind" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold text-forest-950 mb-2">Regulador Climático e Hídrico</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Es el principal regulador térmico y fuente vital de recarga de los mantos acuíferos que abastecen al Área Metropolitana de Guadalajara.
+                            </p>
+                        </div>
+
+                        <!-- Pilar 2 -->
+                        <div class="bg-white rounded-3xl p-6 shadow-sm border border-forest-900/10 hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 rounded-2xl bg-earth-100 text-earth-600 flex items-center justify-center mb-4">
+                                <i data-lucide="flame" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold text-forest-950 mb-2">Caldera Volcánica de 140,000 Años</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Su fascinante actividad geológica da origen a fumarolas naturales, domos riolíticos y emblemáticos ríos de aguas termales.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Narrativa Principal -->
+                <div class="lg:col-span-7 order-1 lg:order-2 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-forest-100 text-forest-900 text-xs font-bold uppercase tracking-wider">
+                        <i data-lucide="trees" class="w-4 h-4 text-forest-700"></i>
+                        <span>¿Qué es el Bosque de La Primavera?</span>
+                    </div>
+
+                    <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-950 leading-tight">
+                        Naturaleza viva a las puertas de la ciudad
+                    </h2>
+
+                    <p class="text-base sm:text-lg text-gray-700 leading-relaxed">
+                        El <strong class="text-forest-900 font-semibold">Bosque de La Primavera</strong> es mucho más que un destino ecoturístico; es un <strong class="text-forest-900 font-semibold">Área de Protección de Flora y Fauna</strong> decretada desde 1980, vital para el equilibrio ecológico del Área Metropolitana de Guadalajara.
+                    </p>
+
+                    <p class="text-base text-gray-600 leading-relaxed">
+                        Ubicado en el corazón de Jalisco, este santuario natural abarca territorio de los municipios de <span class="font-semibold text-forest-900">Zapopan, Tlajomulco de Zúñiga, Tala y El Arenal</span>. Asentado sobre una antigua caldera volcánica activa con más de 140,000 años de historia geológica, regula nuestro clima, purifica el aire, recarga los acuíferos de la región y sirve de hogar para cientos de especies silvestres.
+                    </p>
+
+                    <!-- Etiquetas de municipios -->
+                    <div class="pt-2">
+                        <span class="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-3">Municipios que lo integran:</span>
+                        <div class="flex flex-wrap gap-2.5">
+                            <span class="px-4 py-2 rounded-xl bg-white border border-forest-900/15 text-forest-900 font-semibold text-sm shadow-xs">📍 Zapopan</span>
+                            <span class="px-4 py-2 rounded-xl bg-white border border-forest-900/15 text-forest-900 font-semibold text-sm shadow-xs">📍 Tlajomulco de Zúñiga</span>
+                            <span class="px-4 py-2 rounded-xl bg-white border border-forest-900/15 text-forest-900 font-semibold text-sm shadow-xs">📍 Tala</span>
+                            <span class="px-4 py-2 rounded-xl bg-white border border-forest-900/15 text-forest-900 font-semibold text-sm shadow-xs">📍 El Arenal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 3. EL BOSQUE EN CIFRAS Y FICHA TÉCNICA                                -->
+    <!-- ===================================================================== -->
+    <section id="cifras" class="py-20 lg:py-24 bg-forest-950 text-white relative overflow-hidden">
+        <!-- Decoración de fondo -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-forest-700/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-earth-400/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Encabezado de sección -->
+            <div class="text-center max-w-3xl mx-auto mb-14 space-y-4">
+                <span class="inline-block px-3.5 py-1.5 rounded-full bg-white/10 text-earth-400 text-xs font-bold uppercase tracking-widest">
+                    Patrimonio Natural en Números
+                </span>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold">
+                    El Bosque en Cifras y Ficha Técnica
+                </h2>
+                <p class="text-forest-200/85 text-base sm:text-lg">
+                    Dimensiones extraordinarias que convierten a esta reserva en uno de los ecosistemas más valiosos del occidente de México.
+                </p>
+            </div>
+
+            <!-- Grid de 4 Cifras Destacadas -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <!-- Cifra 1 -->
+                <div class="rounded-3xl bg-white/5 border border-white/10 p-7 hover:bg-white/10 transition-all group">
+                    <div class="w-12 h-12 rounded-2xl bg-forest-700/30 text-forest-200 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                        <i data-lucide="maximize-2" class="w-6 h-6"></i>
+                    </div>
+                    <div class="font-serif text-4xl sm:text-5xl font-extrabold text-earth-400 mb-2">30,500+</div>
+                    <div class="font-bold text-white text-lg mb-1">Hectáreas</div>
+                    <p class="text-sm text-forest-200/75">De área natural protegida decretada desde 1980.</p>
+                </div>
+
+                <!-- Cifra 2 -->
+                <div class="rounded-3xl bg-white/5 border border-white/10 p-7 hover:bg-white/10 transition-all group">
+                    <div class="w-12 h-12 rounded-2xl bg-forest-700/30 text-forest-200 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                        <i data-lucide="sprout" class="w-6 h-6"></i>
+                    </div>
+                    <div class="font-serif text-4xl sm:text-5xl font-extrabold text-forest-200 mb-2">1,000</div>
+                    <div class="font-bold text-white text-lg mb-1">Especies de plantas</div>
+                    <p class="text-sm text-forest-200/75">Registradas entre bosques de pino, encino y selva baja.</p>
+                </div>
+
+                <!-- Cifra 3 -->
+                <div class="rounded-3xl bg-white/5 border border-white/10 p-7 hover:bg-white/10 transition-all group">
+                    <div class="w-12 h-12 rounded-2xl bg-forest-700/30 text-forest-200 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                        <i data-lucide="feather" class="w-6 h-6"></i>
+                    </div>
+                    <div class="font-serif text-4xl sm:text-5xl font-extrabold text-earth-400 mb-2">250+</div>
+                    <div class="font-bold text-white text-lg mb-1">Especies de fauna</div>
+                    <p class="text-sm text-forest-200/75">Aves y mamíferos, incluyendo al puma y venado cola blanca.</p>
+                </div>
+
+                <!-- Cifra 4 -->
+                <div class="rounded-3xl bg-white/5 border border-white/10 p-7 hover:bg-white/10 transition-all group">
+                    <div class="w-12 h-12 rounded-2xl bg-forest-700/30 text-forest-200 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                        <i data-lucide="layers" class="w-6 h-6"></i>
+                    </div>
+                    <div class="font-serif text-4xl sm:text-5xl font-extrabold text-forest-200 mb-2">140,000</div>
+                    <div class="font-bold text-white text-lg mb-1">Años de historia</div>
+                    <p class="text-sm text-forest-200/75">De evolución geológica como caldera volcánica activa.</p>
+                </div>
+            </div>
+
+            <!-- Ficha Técnica Detallada -->
+            <div class="rounded-3xl bg-forest-900/90 border border-white/15 overflow-hidden shadow-2xl">
+                <div class="px-6 sm:px-8 py-5 bg-white/5 border-b border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="file-spreadsheet" class="w-5 h-5 text-earth-400"></i>
+                        <h3 class="font-serif text-xl sm:text-2xl font-bold text-white">Ficha Técnica Oficial del Área Natural</h3>
+                    </div>
+                    <span class="text-xs font-medium text-forest-200 bg-forest-950/60 px-3 py-1.5 rounded-lg w-fit">Categoría Federal: ANP</span>
+                </div>
+
+                <div class="divide-y divide-white/10">
+                    <!-- Fila 1 -->
+                    <div class="grid grid-cols-1 md:grid-cols-12 px-6 sm:px-8 py-5 hover:bg-white/[0.03] transition-colors gap-2">
+                        <div class="md:col-span-4 font-semibold text-earth-400 flex items-center gap-2.5 text-sm sm:text-base">
+                            <i data-lucide="map" class="w-4 h-4 shrink-0"></i>
+                            <span>Extensión territorial</span>
+                        </div>
+                        <div class="md:col-span-8 text-white/95 text-sm sm:text-base">
+                            30,500 hectáreas aproximadamente (polígono protegido).
+                        </div>
+                    </div>
+
+                    <!-- Fila 2 -->
+                    <div class="grid grid-cols-1 md:grid-cols-12 px-6 sm:px-8 py-5 hover:bg-white/[0.03] transition-colors gap-2">
+                        <div class="md:col-span-4 font-semibold text-earth-400 flex items-center gap-2.5 text-sm sm:text-base">
+                            <i data-lucide="award" class="w-4 h-4 shrink-0"></i>
+                            <span>Categoría de conservación</span>
+                        </div>
+                        <div class="md:col-span-8 text-white/95 text-sm sm:text-base">
+                            Área de Protección de Flora y Fauna (ANP) — Decretada en 1980.
+                        </div>
+                    </div>
+
+                    <!-- Fila 3 -->
+                    <div class="grid grid-cols-1 md:grid-cols-12 px-6 sm:px-8 py-5 hover:bg-white/[0.03] transition-colors gap-2">
+                        <div class="md:col-span-4 font-semibold text-earth-400 flex items-center gap-2.5 text-sm sm:text-base">
+                            <i data-lucide="mountain-snow" class="w-4 h-4 shrink-0"></i>
+                            <span>Elevación y puntos altos</span>
+                        </div>
+                        <div class="md:col-span-8 text-white/95 text-sm sm:text-base">
+                            De <strong>1,400 a 2,270 metros</strong> sobre el nivel del mar (destacando el <em>Cerro El Colli</em> y la <em>Mesa El Nejahuete</em>).
+                        </div>
+                    </div>
+
+                    <!-- Fila 4 -->
+                    <div class="grid grid-cols-1 md:grid-cols-12 px-6 sm:px-8 py-5 hover:bg-white/[0.03] transition-colors gap-2">
+                        <div class="md:col-span-4 font-semibold text-earth-400 flex items-center gap-2.5 text-sm sm:text-base">
+                            <i data-lucide="tree-pine" class="w-4 h-4 shrink-0"></i>
+                            <span>Ecosistemas principales</span>
+                        </div>
+                        <div class="md:col-span-8 text-white/95 text-sm sm:text-base">
+                            Bosque de encino, bosque de pino, bosque mixto (pino-encino) y selva baja caducifolia.
+                        </div>
+                    </div>
+
+                    <!-- Fila 5 -->
+                    <div class="grid grid-cols-1 md:grid-cols-12 px-6 sm:px-8 py-5 hover:bg-white/[0.03] transition-colors gap-2">
+                        <div class="md:col-span-4 font-semibold text-earth-400 flex items-center gap-2.5 text-sm sm:text-base">
+                            <i data-lucide="sun" class="w-4 h-4 shrink-0"></i>
+                            <span>Temperatura promedio</span>
+                        </div>
+                        <div class="md:col-span-8 text-white/95 text-sm sm:text-base">
+                            <strong>20 °C</strong> (clima templado subhúmedo con mañanas frescas y tardes templadas).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 4. BIODIVERSIDAD: FLORA Y FAUNA                                       -->
+    <!-- ===================================================================== -->
+    <section id="biodiversidad" class="py-20 lg:py-28 bg-cream relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Encabezado -->
+            <div class="max-w-3xl mx-auto text-center mb-14 space-y-4">
+                <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-forest-100 text-forest-900 text-xs font-bold uppercase tracking-wider">
+                    <i data-lucide="paw-print" class="w-4 h-4 text-forest-700"></i>
+                    <span>Corredor Biológico</span>
+                </span>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-950">
+                    Biodiversidad: Flora y Fauna
+                </h2>
+                <p class="text-gray-600 text-base sm:text-lg leading-relaxed">
+                    El bosque funciona como un <strong class="text-forest-900">puente biológico</strong> estratégico entre la <span class="underline decoration-earth-400 decoration-2 underline-offset-4">Sierra Madre Occidental</span> y el <span class="underline decoration-earth-400 decoration-2 underline-offset-4">Eje Neovolcánico Transversal</span>, albergando especies endémicas y protegidas.
+                </p>
+            </div>
+
+            <!-- Contenedor de 2 Grandes Bloques: Flora & Fauna -->
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- TARJETA FLORA -->
+                <div class="bg-white rounded-3xl p-7 sm:p-9 shadow-sm border border-forest-900/10 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center gap-3.5">
+                                <div class="w-14 h-14 rounded-2xl bg-forest-100 text-forest-800 flex items-center justify-center">
+                                    <i data-lucide="leaf" class="w-7 h-7"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-serif text-2xl sm:text-3xl font-bold text-forest-950">Flora Silvestre</h3>
+                                    <p class="text-sm text-forest-700 font-medium">Más de 1,000 especies catalogadas</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="text-gray-600 text-sm sm:text-base leading-relaxed mb-6">
+                            Los suelos volcánicos ricos en minerales nutren extensos bosques donde predominan coníferas y frondosas acompañadas de flora epífita y herbácea única.
+                        </p>
+
+                        <!-- Lista de especies clave de Flora -->
+                        <div class="space-y-3.5">
+                            <div class="p-4 rounded-2xl bg-forest-50 border border-forest-200/60 flex items-start gap-3.5">
+                                <span class="text-2xl leading-none mt-0.5">🌲</span>
+                                <div>
+                                    <h4 class="font-bold text-forest-950 text-sm sm:text-base">Pinos Nativos</h4>
+                                    <p class="text-xs sm:text-sm text-gray-600">Especies emblemáticas como el pino ocote (<em>Pinus oocarpa</em>) y el pino triste (<em>Pinus lumholtzii</em>).</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-forest-50 border border-forest-200/60 flex items-start gap-3.5">
+                                <span class="text-2xl leading-none mt-0.5">🌳</span>
+                                <div>
+                                    <h4 class="font-bold text-forest-950 text-sm sm:text-base">Encinos Majestuosos</h4>
+                                    <p class="text-xs sm:text-sm text-gray-600">Destacando el roble o encino amarillo (<em>Quercus resinosa</em>) de hojas amplias y gran longevidad.</p>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-forest-50 border border-forest-200/60 flex items-start gap-3.5">
+                                <span class="text-2xl leading-none mt-0.5">🌺</span>
+                                <div>
+                                    <h4 class="font-bold text-forest-950 text-sm sm:text-base">Orquídeas, Copales y Pastizales</h4>
+                                    <p class="text-xs sm:text-sm text-gray-600">Orquídeas silvestres terrestres y epífitas, árboles de copal aromático y pastizales naturales de montaña.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-5 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+                        <span>Transición ecológica: Bosque mixto y selva baja</span>
+                        <span class="font-semibold text-forest-800">Especies protegidas</span>
+                    </div>
+                </div>
+
+                <!-- TARJETA FAUNA -->
+                <div class="bg-white rounded-3xl p-7 sm:p-9 shadow-sm border border-forest-900/10 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center gap-3.5">
+                                <div class="w-14 h-14 rounded-2xl bg-earth-100 text-earth-600 flex items-center justify-center">
+                                    <i data-lucide="bird" class="w-7 h-7"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-serif text-2xl sm:text-3xl font-bold text-forest-950">Fauna Emblemática</h3>
+                                    <p class="text-sm text-earth-600 font-medium">+200 aves y mamíferos silvestres</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="text-gray-600 text-sm sm:text-base leading-relaxed mb-6">
+                            Refugio vital para depredadores tope, mamíferos medianos y una extraordinaria diversidad de aves residentes y migratorias.
+                        </p>
+
+                        <!-- Subsección Aves -->
+                        <div class="p-4 rounded-2xl bg-earth-100/60 border border-earth-200 mb-4">
+                            <div class="flex items-center gap-2 font-bold text-forest-950 text-sm sm:text-base mb-1.5">
+                                <span>🦅</span>
+                                <span>Más de 200 Especies de Aves</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-gray-700 leading-relaxed">
+                                Destacan rapaces majestuosas como el <strong>halcón peregrino</strong> y aves características de los bosques de encino como el <strong>carpintero bellotero</strong>.
+                            </p>
+                        </div>
+
+                        <!-- Grid de Mamíferos -->
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-2.5">Mamíferos que habitan el bosque:</span>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                                <div class="px-3.5 py-2.5 rounded-xl bg-cream border border-forest-900/10 flex items-center gap-2 text-sm font-semibold text-forest-950">
+                                    <span>🐆</span><span>Puma</span>
+                                </div>
+                                <div class="px-3.5 py-2.5 rounded-xl bg-cream border border-forest-900/10 flex items-center gap-2 text-sm font-semibold text-forest-950">
+                                    <span>🦌</span><span>Venado cola blanca</span>
+                                </div>
+                                <div class="px-3.5 py-2.5 rounded-xl bg-cream border border-forest-900/10 flex items-center gap-2 text-sm font-semibold text-forest-950">
+                                    <span>🐈</span><span>Gato montés</span>
+                                </div>
+                                <div class="px-3.5 py-2.5 rounded-xl bg-cream border border-forest-900/10 flex items-center gap-2 text-sm font-semibold text-forest-950">
+                                    <span>🦊</span><span>Zorro gris</span>
+                                </div>
+                                <div class="px-3.5 py-2.5 rounded-xl bg-cream border border-forest-900/10 flex items-center gap-2 text-sm font-semibold text-forest-950">
+                                    <span>🐺</span><span>Coyote</span>
+                                </div>
+                                <div class="px-3.5 py-2.5 rounded-xl bg-cream border border-forest-900/10 flex items-center gap-2 text-sm font-semibold text-forest-950">
+                                    <span>🦡</span><span>Tejón</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-5 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+                        <span>Observación responsable sin perturbar hábitats</span>
+                        <span class="font-semibold text-earth-600">Fauna silvestre libre</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 5. QUÉ HACER / ATRACTIVOS Y ACTIVIDADES PRINCIPALES                   -->
+    <!-- ===================================================================== -->
+    <section id="actividades" class="py-20 lg:py-28 bg-forest-50/80 border-y border-forest-900/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Encabezado y Filtros -->
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+                <div class="space-y-3 max-w-2xl">
+                    <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-forest-900 text-white text-xs font-bold uppercase tracking-wider">
+                        <i data-lucide="compass" class="w-4 h-4 text-earth-400"></i>
+                        <span>Atractivos y Rutas</span>
+                    </span>
+                    <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-950">
+                        Vive la experiencia al aire libre
+                    </h2>
+                    <p class="text-gray-600 text-base sm:text-lg">
+                        Desde aguas geotérmicas volcánicas hasta pistas de ciclismo reconocidas mundialmente. Elige tu aventura ideal.
+                    </p>
+                </div>
+
+                <!-- Filtros interactivos de actividades -->
+                <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1" id="activity-filters">
+                    <button data-filter="all" class="filter-btn active px-4 py-2.5 rounded-xl text-sm font-bold bg-forest-900 text-white shadow-sm transition-all whitespace-nowrap cursor-pointer">
+                        Todas (4)
+                    </button>
+                    <button data-filter="senderismo" class="filter-btn px-4 py-2.5 rounded-xl text-sm font-semibold bg-white text-forest-900 border border-forest-900/15 hover:bg-forest-100 transition-all whitespace-nowrap cursor-pointer">
+                        Senderismo
+                    </button>
+                    <button data-filter="mtb" class="filter-btn px-4 py-2.5 rounded-xl text-sm font-semibold bg-white text-forest-900 border border-forest-900/15 hover:bg-forest-100 transition-all whitespace-nowrap cursor-pointer">
+                        Ciclismo MTB
+                    </button>
+                    <button data-filter="termales" class="filter-btn px-4 py-2.5 rounded-xl text-sm font-semibold bg-white text-forest-900 border border-forest-900/15 hover:bg-forest-100 transition-all whitespace-nowrap cursor-pointer">
+                        Aguas Termales
+                    </button>
+                    <button data-filter="aves" class="filter-btn px-4 py-2.5 rounded-xl text-sm font-semibold bg-white text-forest-900 border border-forest-900/15 hover:bg-forest-100 transition-all whitespace-nowrap cursor-pointer">
+                        Aves y Foto
+                    </button>
+                </div>
+            </div>
+
+            <!-- Grid de 4 Tarjetas de Actividades -->
+            <div class="grid md:grid-cols-2 gap-7" id="activities-grid">
+
+                <!-- TARJETA 1: Senderismo y Caminata / Trail Running -->
+                <article data-category="senderismo" class="activity-card bg-white rounded-3xl overflow-hidden shadow-sm border border-forest-900/10 hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="h-44 bg-gradient-to-br from-forest-800 via-forest-700 to-forest-900 p-6 flex flex-col justify-between relative overflow-hidden">
+                        <!-- Ilustración SVG sendero montaña -->
+                        <svg class="absolute right-0 bottom-0 w-48 h-40 text-white/10" viewBox="0 0 200 160" fill="currentColor">
+                            <path d="M20 160L85 45L135 110L165 75L200 160H20Z"/>
+                        </svg>
+                        <div class="flex items-center justify-between relative z-10">
+                            <span class="px-3 py-1 rounded-lg bg-white/15 backdrop-blur-md text-white text-xs font-semibold">Todos los niveles</span>
+                            <div class="w-10 h-10 rounded-xl bg-white/15 backdrop-blur-md text-white flex items-center justify-center">
+                                <i data-lucide="footprints" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <div class="relative z-10">
+                            <h3 class="font-serif text-2xl font-bold text-white">Senderismo y Trail Running</h3>
+                        </div>
+                    </div>
+
+                    <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-5">
+                        <div class="space-y-3">
+                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+                                Recorre veredas señalizadas rodeadas de pinos, encinos y cañadas ideales para desconectarte del ritmo urbano.
+                            </p>
+                            <div class="p-3.5 rounded-2xl bg-forest-50 border border-forest-100">
+                                <span class="text-xs font-bold uppercase tracking-wider text-forest-800 block mb-1">Ruta Imperdible:</span>
+                                <p class="text-sm text-forest-950 font-medium">
+                                    🏔️ <strong>Subida a La Torre:</strong> Ascenso a la torre de detección de incendios con vistas panorámicas de 360 grados de toda la caldera.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 flex items-center justify-between border-t border-gray-100">
+                            <span class="text-xs text-gray-500 font-medium">Ingreso recomendado: Mariano Otero</span>
+                            <button onclick="openRouteDetail('senderismo')" class="text-sm font-bold text-forest-800 hover:text-forest-600 inline-flex items-center gap-1 cursor-pointer">
+                                <span>Detalles de ruta</span>
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- TARJETA 2: Ciclismo de Montaña (MTB) -->
+                <article data-category="mtb" class="activity-card bg-white rounded-3xl overflow-hidden shadow-sm border border-forest-900/10 hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="h-44 bg-gradient-to-br from-earth-600 via-earth-500 to-forest-900 p-6 flex flex-col justify-between relative overflow-hidden">
+                        <svg class="absolute right-2 bottom-2 w-44 h-36 text-white/10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/>
+                            <path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/>
+                        </svg>
+                        <div class="flex items-center justify-between relative z-10">
+                            <span class="px-3 py-1 rounded-lg bg-white/15 backdrop-blur-md text-white text-xs font-semibold">Fama Internacional</span>
+                            <div class="w-10 h-10 rounded-xl bg-white/15 backdrop-blur-md text-white flex items-center justify-center">
+                                <i data-lucide="bike" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <div class="relative z-10">
+                            <h3 class="font-serif text-2xl font-bold text-white">Ciclismo de Montaña (MTB)</h3>
+                        </div>
+                    </div>
+
+                    <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-5">
+                        <div class="space-y-3">
+                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+                                Descubre pistas reconocidas a nivel nacional y mundial por su terreno volcánico técnico, desafiante y fluido para todos los niveles.
+                            </p>
+                            <div class="p-3.5 rounded-2xl bg-earth-100/70 border border-earth-200">
+                                <span class="text-xs font-bold uppercase tracking-wider text-earth-600 block mb-1.5">Pistas Legendarias:</span>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="px-2.5 py-1 rounded-lg bg-white text-forest-950 text-xs font-bold shadow-2xs">🚵 El Espinazo del Diablo</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-white text-forest-950 text-xs font-bold shadow-2xs">🚵 La Tubería</span>
+                                    <span class="px-2.5 py-1 rounded-lg bg-white text-forest-950 text-xs font-bold shadow-2xs">🚵 El Culebreado</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 flex items-center justify-between border-t border-gray-100">
+                            <span class="text-xs text-gray-500 font-medium">Uso obligatorio de casco y equipo</span>
+                            <button onclick="openRouteDetail('mtb')" class="text-sm font-bold text-earth-600 hover:text-earth-500 inline-flex items-center gap-1 cursor-pointer">
+                                <span>Detalles de pistas</span>
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- TARJETA 3: Aguas Termales y Descanso (Río Caliente) -->
+                <article data-category="termales" class="activity-card bg-white rounded-3xl overflow-hidden shadow-sm border border-forest-900/10 hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="h-44 bg-gradient-to-br from-teal-800 via-forest-800 to-forest-950 p-6 flex flex-col justify-between relative overflow-hidden">
+                        <svg class="absolute right-0 bottom-0 w-48 h-32 text-white/10" viewBox="0 0 200 100" fill="none" stroke="currentColor" stroke-width="6">
+                            <path d="M0 40 Q 50 10, 100 40 T 200 40"/>
+                            <path d="M0 70 Q 50 40, 100 70 T 200 70"/>
+                        </svg>
+                        <div class="flex items-center justify-between relative z-10">
+                            <span class="px-3 py-1 rounded-lg bg-white/15 backdrop-blur-md text-white text-xs font-semibold">35 °C a 40 °C naturales</span>
+                            <div class="w-10 h-10 rounded-xl bg-white/15 backdrop-blur-md text-white flex items-center justify-center">
+                                <i data-lucide="waves" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <div class="relative z-10">
+                            <h3 class="font-serif text-2xl font-bold text-white">Río Caliente y Aguas Termales</h3>
+                        </div>
+                    </div>
+
+                    <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-5">
+                        <div class="space-y-3">
+                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+                                Relájate en un arroyo natural y balnearios ecológicos alimentados directamente por manantiales geotérmicos derivados de la actividad volcánica.
+                            </p>
+                            <div class="p-3.5 rounded-2xl bg-teal-50/70 border border-teal-200/70">
+                                <span class="text-xs font-bold uppercase tracking-wider text-teal-800 block mb-1">Experiencia Geotérmica:</span>
+                                <p class="text-sm text-forest-950 font-medium">
+                                    ♨️ Aguas cristalinas tibias que rondan los <strong>35 °C a 40 °C</strong> rodeadas de galería ribereña y silencio natural.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 flex items-center justify-between border-t border-gray-100">
+                            <span class="text-xs text-gray-500 font-medium">Ingreso: Zona Río Caliente (Tala)</span>
+                            <button onclick="openRouteDetail('termales')" class="text-sm font-bold text-teal-800 hover:text-teal-600 inline-flex items-center gap-1 cursor-pointer">
+                                <span>Cómo llegar</span>
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- TARJETA 4: Observación de Aves y Fotografía -->
+                <article data-category="aves" class="activity-card bg-white rounded-3xl overflow-hidden shadow-sm border border-forest-900/10 hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="h-44 bg-gradient-to-br from-forest-900 via-emerald-800 to-earth-600 p-6 flex flex-col justify-between relative overflow-hidden">
+                        <div class="flex items-center justify-between relative z-10">
+                            <span class="px-3 py-1 rounded-lg bg-white/15 backdrop-blur-md text-white text-xs font-semibold">Ecoturismo Contemplativo</span>
+                            <div class="w-10 h-10 rounded-xl bg-white/15 backdrop-blur-md text-white flex items-center justify-center">
+                                <i data-lucide="camera" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <div class="relative z-10">
+                            <h3 class="font-serif text-2xl font-bold text-white">Observación de Aves y Fotografía</h3>
+                        </div>
+                    </div>
+
+                    <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-5">
+                        <div class="space-y-3">
+                            <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+                                Zonas de avistamiento tranquilo ideales para capturar paisajes volcánicos, niebla matutina y más de 200 especies de aves en libertad.
+                            </p>
+                            <div class="p-3.5 rounded-2xl bg-forest-50 border border-forest-100">
+                                <span class="text-xs font-bold uppercase tracking-wider text-forest-800 block mb-1">Puntos Recomendados:</span>
+                                <p class="text-sm text-forest-950 font-medium">
+                                    🔭 Áreas tranquilas en <strong>La Venta del Astillero</strong> y el <strong>Cañón de las Flores</strong>, especialmente al amanecer.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 flex items-center justify-between border-t border-gray-100">
+                            <span class="text-xs text-gray-500 font-medium">Mejor horario: 07:00 – 10:00 hrs</span>
+                            <button onclick="openRouteDetail('aves')" class="text-sm font-bold text-forest-800 hover:text-forest-600 inline-flex items-center gap-1 cursor-pointer">
+                                <span>Consejos de avistamiento</span>
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 6. COMPROMISO, REGLAMENTO Y CONSERVACIÓN                              -->
+    <!-- ===================================================================== -->
+    <section id="conservacion" class="py-20 lg:py-28 bg-cream relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Banner Superior de Conciencia -->
+            <div class="rounded-3xl bg-gradient-to-r from-forest-950 via-forest-900 to-forest-800 p-8 sm:p-12 text-white shadow-xl mb-14 relative overflow-hidden">
+                <div class="absolute -right-16 -bottom-16 w-72 h-72 rounded-full bg-earth-400/20 blur-2xl pointer-events-none"></div>
+                <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+                    <div class="space-y-4 max-w-2xl">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/30 text-amber-200 text-xs font-bold uppercase tracking-wider">
+                            <i data-lucide="alert-triangle" class="w-3.5 h-3.5"></i>
+                            <span>Sección de Conciencia Ambiental</span>
+                        </div>
+                        <h2 class="font-serif text-3xl sm:text-4xl font-bold leading-tight">
+                            Cuidarlo es responsabilidad de todos
+                        </h2>
+                        <p class="text-forest-100/90 text-base sm:text-lg leading-relaxed">
+                            El Bosque de La Primavera enfrenta retos constantes como los incendios forestales y el crecimiento urbano. Antes de ingresar, consulta nuestro reglamento, respeta los senderos marcados y ayúdanos a mantener este patrimonio natural libre de residuos.
+                        </p>
+                    </div>
+                    <div class="shrink-0">
+                        <a href="#reglamento-detalle" class="inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-2xl bg-earth-400 hover:bg-earth-500 text-forest-950 font-bold text-sm sm:text-base transition-all shadow-lg">
+                            <i data-lucide="book-open-check" class="w-5 h-5"></i>
+                            <span>Consulta el reglamento de visita</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid Reglamento Oficial + Checklist Interactivo del Visitante -->
+            <div id="reglamento-detalle" class="grid lg:grid-cols-12 gap-8 items-start">
+
+                <!-- Columna Izquierda (7 cols): Reglas y Horarios Oficiales -->
+                <div class="lg:col-span-7 space-y-6">
+                    <h3 class="font-serif text-2xl sm:text-3xl font-bold text-forest-950">
+                        Reglamento Oficial y Accesos
+                    </h3>
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <!-- Regla 1: Fuego -->
+                        <div class="bg-white rounded-2xl p-5 border-l-4 border-red-600 shadow-xs">
+                            <div class="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center mb-3">
+                                <i data-lucide="flame-kindling" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="font-bold text-forest-950 text-base mb-1.5">Cero Fuego o Fogatas</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Estrictamente prohibido hacer fogatas, quemas, usar asadores o encender cualquier tipo de fuego.
+                            </p>
+                        </div>
+
+                        <!-- Regla 2: Basura -->
+                        <div class="bg-white rounded-2xl p-5 border-l-4 border-forest-700 shadow-xs">
+                            <div class="w-10 h-10 rounded-xl bg-forest-50 text-forest-700 flex items-center justify-center mb-3">
+                                <i data-lucide="trash-2" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="font-bold text-forest-950 text-base mb-1.5">Llévate tu Basura</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                No existen contenedores dentro de las brechas; todo residuo orgánico e inorgánico debe regresar contigo.
+                            </p>
+                        </div>
+
+                        <!-- Regla 3: Fauna y Flora -->
+                        <div class="bg-white rounded-2xl p-5 border-l-4 border-earth-500 shadow-xs">
+                            <div class="w-10 h-10 rounded-xl bg-earth-100 text-earth-600 flex items-center justify-center mb-3">
+                                <i data-lucide="shield-alert" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="font-bold text-forest-950 text-base mb-1.5">Respeta la Fauna y Flora</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                No alimentes a los animales silvestres, no ingreses con mascotas y no extraigas plantas, piedras o tierra.
+                            </p>
+                        </div>
+
+                        <!-- Regla 4: Horarios -->
+                        <div class="bg-white rounded-2xl p-5 border-l-4 border-forest-900 shadow-xs">
+                            <div class="w-10 h-10 rounded-xl bg-forest-100 text-forest-900 flex items-center justify-center mb-3">
+                                <i data-lucide="clock-4" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="font-bold text-forest-950 text-base mb-1.5">Horarios Oficiales</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Acceso general de <strong>7:00 a 17:00 horas</strong> únicamente por las casetas e ingresos autorizados.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta de Puntos de Entrada Oficiales -->
+                    <div class="bg-white rounded-3xl p-6 sm:p-7 border border-forest-900/10 shadow-xs">
+                        <div class="flex items-center gap-2.5 mb-4">
+                            <i data-lucide="door-open" class="w-5 h-5 text-forest-700"></i>
+                            <h4 class="font-serif text-xl font-bold text-forest-950">Puntos de Entrada Oficiales</h4>
+                        </div>
+                        <div class="grid sm:grid-cols-3 gap-3">
+                            <div class="p-3.5 rounded-2xl bg-forest-50 border border-forest-200/70">
+                                <span class="text-xs font-bold text-forest-700 block">Ingreso 01 • Zapopan</span>
+                                <span class="font-bold text-forest-950 text-sm block mt-0.5">Prol. Mariano Otero</span>
+                                <span class="text-xs text-gray-500 mt-1 block">Senderismo, MTB y La Torre</span>
+                            </div>
+                            <div class="p-3.5 rounded-2xl bg-forest-50 border border-forest-200/70">
+                                <span class="text-xs font-bold text-forest-700 block">Ingreso 02 • Zapopan</span>
+                                <span class="font-bold text-forest-950 text-sm block mt-0.5">La Venta del Astillero</span>
+                                <span class="text-xs text-gray-500 mt-1 block">Avistamiento de aves y brechas</span>
+                            </div>
+                            <div class="p-3.5 rounded-2xl bg-forest-50 border border-forest-200/70">
+                                <span class="text-xs font-bold text-forest-700 block">Ingreso 03 • Tala</span>
+                                <span class="font-bold text-forest-950 text-sm block mt-0.5">Río Caliente</span>
+                                <span class="text-xs text-gray-500 mt-1 block">Aguas termales y descanso</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha (5 cols): Checklist Interactivo del Visitante Responsable -->
+                <div class="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 border border-forest-900/10 shadow-md">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-forest-700">Prepárate antes de salir</span>
+                            <h3 class="font-serif text-2xl font-bold text-forest-950">Mochila Responsable</h3>
+                        </div>
+                        <span id="checklist-badge" class="px-3 py-1 rounded-full bg-forest-100 text-forest-900 font-bold text-xs">0 / 5 listos</span>
+                    </div>
+
+                    <p class="text-sm text-gray-600 mb-5">
+                        Marca los elementos esenciales para disfrutar tu visita con seguridad y sin dejar huella ecológica:
+                    </p>
+
+                    <div class="space-y-3" id="visitor-checklist">
+                        <label class="flex items-center gap-3 p-3.5 rounded-2xl bg-cream hover:bg-forest-50 border border-forest-900/10 cursor-pointer transition-colors">
+                            <input type="checkbox" class="check-item w-5 h-5 rounded accent-forest-800 cursor-pointer">
+                            <span class="text-sm font-medium text-forest-950">Termo reutilizable con suficiente agua (mín. 1.5 L)</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 rounded-2xl bg-cream hover:bg-forest-50 border border-forest-900/10 cursor-pointer transition-colors">
+                            <input type="checkbox" class="check-item w-5 h-5 rounded accent-forest-800 cursor-pointer">
+                            <span class="text-sm font-medium text-forest-950">Bolsa propia para regresar toda mi basura</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 rounded-2xl bg-cream hover:bg-forest-50 border border-forest-900/10 cursor-pointer transition-colors">
+                            <input type="checkbox" class="check-item w-5 h-5 rounded accent-forest-800 cursor-pointer">
+                            <span class="text-sm font-medium text-forest-950">Calzado cerrado de montaña y ropa cómoda</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 rounded-2xl bg-cream hover:bg-forest-50 border border-forest-900/10 cursor-pointer transition-colors">
+                            <input type="checkbox" class="check-item w-5 h-5 rounded accent-forest-800 cursor-pointer">
+                            <span class="text-sm font-medium text-forest-950">Bloqueador solar y repelente biodegradable</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 rounded-2xl bg-cream hover:bg-forest-50 border border-forest-900/10 cursor-pointer transition-colors">
+                            <input type="checkbox" class="check-item w-5 h-5 rounded accent-forest-800 cursor-pointer">
+                            <span class="text-sm font-medium text-forest-950">Teléfono cargado y registro de salida antes de las 17:00</span>
+                        </label>
+                    </div>
+
+                    <div id="checklist-feedback" class="mt-5 p-3.5 rounded-2xl bg-forest-50 text-forest-900 text-xs font-medium text-center transition-all">
+                        Selecciona cada punto para verificar que estás listo para visitar el bosque.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 7. PIE DE PÁGINA (FOOTER)                                             -->
+    <!-- ===================================================================== -->
+    <footer class="bg-forest-950 text-forest-200 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-8 border-b border-white/10">
+                <!-- Identidad -->
+                <div class="space-y-2">
+                    <div class="flex items-center gap-2.5 text-white">
+                        <div class="w-8 h-8 rounded-lg bg-forest-700 flex items-center justify-center">
+                            <i data-lucide="trees" class="w-4 h-4"></i>
+                        </div>
+                        <span class="font-serif font-bold text-lg">Bosque de La Primavera</span>
+                    </div>
+                    <p class="text-sm text-forest-200/80">
+                        Bosque de La Primavera — Área de Protección de Flora y Fauna | Jalisco, México.
+                    </p>
+                </div>
+
+                <!-- Accesos rápidos -->
+                <div class="flex flex-wrap items-center gap-3 sm:gap-5 text-sm font-medium">
+                    <button onclick="openVisitModal('horarios')" class="hover:text-earth-400 transition-colors cursor-pointer">
+                        Horarios de acceso
+                    </button>
+                    <span class="text-white/25">•</span>
+                    <button onclick="openVisitModal('ingresos')" class="hover:text-earth-400 transition-colors cursor-pointer">
+                        Puntos de entrada
+                    </button>
+                    <span class="text-white/25">•</span>
+                    <button onclick="openVisitModal('emergencias')" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-red-500/20 border border-red-400/30 text-red-200 hover:bg-red-500/30 transition-colors cursor-pointer">
+                        <i data-lucide="phone-call" class="w-3.5 h-3.5"></i>
+                        <span>Reporte de emergencias e incendios (911)</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-forest-200/60">
+                <p>Conservando 30,500+ hectáreas de patrimonio natural para Jalisco.</p>
+                <p>Respeta los senderos • Cero fogatas • Regresa tus residuos</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL INTERACTIVO DE INFORMACIÓN / HORARIOS / RUTAS / EMERGENCIAS     -->
+    <!-- ===================================================================== -->
+    <div id="info-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-forest-950/75 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-forest-900/10 relative animate-[fadeIn_0.2s_ease-out]">
+            <button onclick="closeVisitModal()" aria-label="Cerrar ventana" class="absolute top-5 right-5 w-9 h-9 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 flex items-center justify-center transition-colors cursor-pointer">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div id="modal-badge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-forest-100 text-forest-900 text-xs font-bold uppercase tracking-wider mb-3">
+                Información al Visitante
+            </div>
+            <h3 id="modal-title" class="font-serif text-2xl sm:text-3xl font-bold text-forest-950 mb-3">
+                Título del Modal
+            </h3>
+            <div id="modal-body" class="text-sm sm:text-base text-gray-600 space-y-3 leading-relaxed">
+                <!-- Contenido dinámico -->
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-gray-100 flex justify-end">
+                <button onclick="closeVisitModal()" class="px-5 py-2.5 rounded-xl bg-forest-900 hover:bg-forest-800 text-white font-semibold text-sm transition-colors cursor-pointer">
+                    Entendido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- SCRIPTS DE INTERACTIVIDAD                                             -->
+    <!-- ===================================================================== -->
+    <script>
+        // Inicializar iconos Lucide
+        lucide.createIcons();
+
+        // 1. Menú móvil
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // 2. Filtro de Actividades ("Qué Hacer")
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const activityCards = document.querySelectorAll('.activity-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const selectedFilter = btn.getAttribute('data-filter');
+
+                // Actualizar estado activo de botones
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-forest-900', 'text-white', 'shadow-sm');
+                    b.classList.add('bg-white', 'text-forest-900', 'border', 'border-forest-900/15');
+                });
+                btn.classList.remove('bg-white', 'text-forest-900', 'border', 'border-forest-900/15');
+                btn.classList.add('bg-forest-900', 'text-white', 'shadow-sm');
+
+                // Filtrar tarjetas
+                activityCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    if (selectedFilter === 'all' || selectedFilter === category) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // 3. Checklist Interactivo del Visitante
+        const checkItems = document.querySelectorAll('.check-item');
+        const checklistBadge = document.getElementById('checklist-badge');
+        const checklistFeedback = document.getElementById('checklist-feedback');
+
+        checkItems.forEach(item => {
+            item.addEventListener('change', () => {
+                const total = checkItems.length;
+                const checked = document.querySelectorAll('.check-item:checked').length;
+                checklistBadge.textContent = `${checked} / ${total} listos`;
+
+                if (checked === total) {
+                    checklistBadge.classList.remove('bg-forest-100', 'text-forest-900');
+                    checklistBadge.classList.add('bg-forest-700', 'text-white');
+                    checklistFeedback.classList.remove('bg-forest-50', 'text-forest-900');
+                    checklistFeedback.classList.add('bg-forest-900', 'text-white');
+                    checklistFeedback.textContent = '¡Excelente! Estás 100% preparado para ser un visitante ejemplar en el Bosque de La Primavera.';
+                } else {
+                    checklistBadge.classList.add('bg-forest-100', 'text-forest-900');
+                    checklistBadge.classList.remove('bg-forest-700', 'text-white');
+                    checklistFeedback.classList.add('bg-forest-50', 'text-forest-900');
+                    checklistFeedback.classList.remove('bg-forest-900', 'text-white');
+                    checklistFeedback.textContent = `Te faltan ${total - checked} elementos recomendados para tu mochila.`;
+                }
+            });
+        });
+
+        // 4. Sistema de Modal para Horarios, Puntos de Entrada, Emergencias y Detalles de Ruta
+        const modal = document.getElementById('info-modal');
+        const modalBadge = document.getElementById('modal-badge');
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-body');
+
+        const modalContentData = {
+            horarios: {
+                badge: 'Planifica tu Visita',
+                title: 'Horarios Oficiales de Acceso',
+                body: `
+                    <p>El ingreso al Bosque de La Primavera está regulado para garantizar la seguridad de los visitantes y la protección de la vida silvestre:</p>
+                    <div class="p-4 rounded-2xl bg-forest-50 border border-forest-200 space-y-2 text-sm text-forest-950">
+                        <div><strong>⏰ Horario general:</strong> 07:00 a 17:00 horas todos los días.</div>
+                        <div><strong>🚪 Último ingreso recomendado:</strong> 15:00 horas para asegurar el retorno con luz natural.</div>
+                        <div><strong>⚠️ Temporada de estiaje:</strong> En días de alta alerta atmosférica o incendios forestales, el acceso puede restringirse temporalmente.</div>
+                    </div>
+                `
+            },
+            ingresos: {
+                badge: 'Accesos Autorizados',
+                title: 'Puntos de Entrada Oficiales',
+                body: `
+                    <p>Utiliza únicamente los accesos oficiales registrados para tu seguridad:</p>
+                    <ul class="space-y-2.5 text-sm">
+                        <li class="p-3 rounded-xl bg-cream border border-forest-900/10">
+                            <strong class="text-forest-950 block">1. Prolongación Mariano Otero (Zapopan)</strong>
+                            Acceso principal para senderistas, corredores y ciclistas de montaña rumbo a La Torre y pistas clásicas.
+                        </li>
+                        <li class="p-3 rounded-xl bg-cream border border-forest-900/10">
+                            <strong class="text-forest-950 block">2. La Venta del Astillero (Zapopan)</strong>
+                            Acceso norte ideal para observación de aves, caminatas tranquilas y conexión con brechas forestales.
+                        </li>
+                        <li class="p-3 rounded-xl bg-cream border border-forest-900/10">
+                            <strong class="text-forest-950 block">3. Río Caliente (Tala)</strong>
+                            Acceso oeste hacia los manantiales geotérmicos y zonas de descanso ribereño.
+                        </li>
+                    </ul>
+                `
+            },
+            emergencias: {
+                badge: 'Atención Inmediata',
+                title: 'Reporte de Emergencias e Incendios',
+                body: `
+                    <p>Tu reporte oportuno puede salvar cientos de hectáreas de bosque y vidas silvestres.</p>
+                    <div class="p-4 rounded-2xl bg-red-50 border border-red-200 text-red-950 space-y-2">
+                        <div class="text-lg font-extrabold">📞 Línea de Emergencias: 911</div>
+                        <p class="text-sm">Reporta de inmediato cualquier columna de humo, conato de incendio, fogata clandestina o persona extraviada indicando el punto de ingreso más cercano.</p>
+                    </div>
+                `
+            },
+            senderismo: {
+                badge: 'Ruta Destacada',
+                title: 'Senderismo y Subida a La Torre',
+                body: `
+                    <p>Una de las caminatas más emblemáticas del Área Metropolitana de Guadalajara:</p>
+                    <div class="p-4 rounded-2xl bg-forest-50 border border-forest-200 space-y-2 text-sm text-forest-950">
+                        <div><strong>📍 Punto de partida:</strong> Caseta Prolongación Mariano Otero.</div>
+                        <div><strong>🏔️ Atractivo principal:</strong> Torre de detección de incendios con vista panorámica de 360° sobre la caldera volcánica.</div>
+                        <div><strong>👟 Recomendación:</strong> Inicia temprano (7:00 - 8:30 am) para disfrutar de la neblina matutina y temperatura fresca.</div>
+                    </div>
+                `
+            },
+            mtb: {
+                badge: 'Ciclismo de Montaña',
+                title: 'Pistas Clásicas de MTB',
+                body: `
+                    <p>El suelo volcánico compacto y las cañadas naturales hacen de La Primavera un referente del ciclismo de montaña:</p>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                        <li><strong>• El Espinazo del Diablo:</strong> Cresta panorámica con descensos técnicos y vistas espectaculares.</li>
+                        <li><strong>• La Tubería:</strong> Sendero fluido y rápido entre bosque de pino y encino.</li>
+                        <li><strong>• El Culebreado:</strong> Curvas enlazadas ideales para mejorar técnica y control.</li>
+                    </ul>
+                    <p class="text-xs text-earth-600 font-semibold pt-1">Recuerda ceder siempre el paso a senderistas y respetar el sentido de las pistas.</p>
+                `
+            },
+            termales: {
+                badge: 'Geotermia Natural',
+                title: 'Río Caliente y Aguas Termales',
+                body: `
+                    <p>Gracias a los 140,000 años de actividad volcánica del subsuelo, el agua subterránea emerge de forma natural a temperaturas entre <strong>35 °C y 40 °C</strong>.</p>
+                    <div class="p-4 rounded-2xl bg-teal-50 border border-teal-200 text-sm text-teal-950 space-y-1.5">
+                        <div><strong>💧 Conservación del agua:</strong> No utilices jabones, champús ni bloqueadores químicos dentro del cauce natural del río.</div>
+                        <div><strong>🚗 Acceso:</strong> Por la carretera Guadalajara – Ameca, desviación hacia La Primavera / Río Caliente.</div>
+                    </div>
+                `
+            },
+            aves: {
+                badge: 'Naturaleza y Fotografía',
+                title: 'Observación de Aves en el Bosque',
+                body: `
+                    <p>Al ser puente entre dos grandes provincias biogeográficas, el bosque reúne más de <strong>200 especies de aves</strong>.</p>
+                    <div class="p-4 rounded-2xl bg-forest-50 border border-forest-200 text-sm text-forest-950 space-y-1.5">
+                        <div><strong>🦅 Especies estrella:</strong> Halcón peregrino, carpintero bellotero, búhos, colibríes y tangaras.</div>
+                        <div><strong>🔇 Etiqueta de avistamiento:</strong> Guarda silencio, evita reproducir cantos grabados y utiliza binoculares o teleobjetivo.</div>
+                    </div>
+                `
+            }
+        };
+
+        function openVisitModal(key) {
+            const data = modalContentData[key] || modalContentData.horarios;
+            modalBadge.textContent = data.badge;
+            modalTitle.textContent = data.title;
+            modalBody.innerHTML = data.body;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function openRouteDetail(routeKey) {
+            openVisitModal(routeKey);
+        }
+
+        function closeVisitModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Cerrar modal al hacer clic fuera del contenedor
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeVisitModal();
+            }
+        });
+
+        // Cerrar modal con tecla Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeVisitModal();
+            }
+        });
+    </script>
+</body>
+</html>
